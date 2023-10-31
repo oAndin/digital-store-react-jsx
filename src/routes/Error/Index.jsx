@@ -1,6 +1,8 @@
 import { useRouteError } from "react-router-dom";
+import ButtonToHome from "../../components/ButtonReturnHome/Index";
 
 export default function ErrorPage() {
+
   const error = useRouteError();
   console.error(error);
 
@@ -11,6 +13,7 @@ export default function ErrorPage() {
       <p>
         <i>{error.statusText || error.message}</i>
       </p>
+      <ButtonToHome/>
     </div>
   );
 }

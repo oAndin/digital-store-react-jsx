@@ -2,33 +2,43 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-import {createBrowserRouter,RouterProvider, } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import Error from './routes/Error/Index.jsx';
 import Home from './routes/Home/Index.jsx'
-import { useContext } from 'react';
-import { AuthContext } from './contexts/AuthContext/Index.jsx';
 import MeusPedidos from './routes/MeusPedidos/Index.jsx';
+import { AuthProvider } from './contexts/AuthContext/Index.jsx';
+import Produtos from './routes/Produtos/Index.jsx';
+import Categorias from './routes/Categorias/Index.jsx';
 
-const {isLogged} = useContext(AuthContext);
 
 const router = createBrowserRouter([
   {
-    path:'/',
-    element:<App/>,
-    children:[
+    path: '/',
+    element: <App />,
+    children: [
       {
-        path:'/',
-        element:<Home/>
+        path: '/',
+        element: <Home />
       },
       {
-        path:'/meus-pedidos',
-        element:<MeusPedidos/>
+        path: '/meus-pedidos',
+        element: <MeusPedidos />
+      },
+      {
+        path: '/produtos',
+        element: <Produtos />
+      },
+      {
+        path: '/categorias',
+        element: <Categorias />
       },
     ],
-    errorElement:<Error/>
+    errorElement: <Error />
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}/>
+  <AuthProvider>
+    <RouterProvider router={router} />
+  </AuthProvider>
 )
