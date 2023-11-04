@@ -20,10 +20,13 @@ const Header = () => {
                 <div className="acoes">
                     <Link to={'/cadastro'}>Cadastre-se</Link>
                     <Link to={'/login'}>Entrar</Link>
-                    <box-icon name='cart' ></box-icon>
+                    <box-icon name='cart' onClick={() => {
+                        setIsCartOpen(!isCartOpen)
+                        console.log(isCartOpen);
+                    }} ></box-icon>
                     {isCartOpen && (
                         <ShoppingCartModal>
-                            onClick={() => setIsCartOpen}
+
                         </ShoppingCartModal>
                     )}
                 </div>

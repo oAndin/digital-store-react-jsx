@@ -1,5 +1,10 @@
 #shopping-cart-modal {
-    background-color: #fff;
+    background-color: #c4dc;
+    position: absolute;
+    display: flex;
     width: 300px;
     height: 300px;
+}
+#shopping-cart-modal::after {
+    
 }
