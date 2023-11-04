@@ -45,6 +45,7 @@ header .busca box-icon {
 
 header .busca box-icon:hover{
     fill: #c92071;
+    cursor: pointer;
 }
 header .acoes {
     margin-left: 48px;
@@ -63,4 +64,12 @@ header nav {
 header nav ul {
     display: flex;
     gap: 30px;
+}
+
+header .acoes box-icon{
+    transition: 0.3s ease-in-out;
+}
+header .acoes box-icon:hover{
+    fill: #c92071;
+    cursor: pointer;
 }

@@ -6,9 +6,9 @@ import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import Error from './routes/Error/Index.jsx';
 import Home from './routes/Home/Index.jsx'
 import MeusPedidos from './routes/MeusPedidos/Index.jsx';
-import { AuthProvider } from './contexts/AuthContext/Index.jsx';
 import Produtos from './routes/Produtos/Index.jsx';
 import Categorias from './routes/Categorias/Index.jsx';
+import { ShoppingCartProvider } from './contexts/ShoppingCartContext/Index.jsx';
 
 
 const router = createBrowserRouter([
@@ -38,7 +38,9 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <AuthProvider>
-    <RouterProvider router={router} />
-  </AuthProvider>
+  
+    <ShoppingCartProvider>
+      <RouterProvider router={router} />
+    </ShoppingCartProvider>
+
 )
