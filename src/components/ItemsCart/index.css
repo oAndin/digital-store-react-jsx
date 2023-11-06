@@ -1,0 +1,35 @@
+#item-do-carrinho {
+    display: flex;
+    width: 255px;
+    gap: 20px;
+    /* border: 1px solid #000; */
+}
+
+#titulo {
+    width: 167px;
+    font-size: 14px;
+    letter-spacing: 0.75px;
+}
+
+#imagem-produto {
+    width: 71px;
+    height: 58px;
+    border-radius: 3px;
+    background: #E2E3FF;
+    box-shadow: 0px 2.66916px 16.68224px 0px rgba(0, 0, 0, 0.05);
+}
+
+#preco {
+    width: 88px;
+    color: #474747;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.75px;
+}
+
+#cima-baixo {
+    display: flex;
+    gap: 7px;
+    flex-direction: column;
+}
