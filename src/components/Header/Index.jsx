@@ -22,7 +22,6 @@ const Header = () => {
                     <Link to={'/login'}>Entrar</Link>
                     <box-icon name='cart' onClick={() => {
                         setIsCartOpen(!isCartOpen)
-                        console.log(isCartOpen);
                     }} ></box-icon>
                     {isCartOpen && (
                         <ShoppingCartModal>

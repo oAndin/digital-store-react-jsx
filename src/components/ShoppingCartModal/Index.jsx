@@ -11,7 +11,10 @@ const ShoppingCartModal = () => {
         <>
             {isCartOpen && (
                 <span id='shopping-cart-modal'>
-
+                    <h3>Meu carrinho</h3>
+                    <span id='line'></span>
+                    <div></div>
+                    <span id='line'></span>
                 </span >
             )}
         </>

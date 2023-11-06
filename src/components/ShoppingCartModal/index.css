@@ -1,10 +1,26 @@
 #shopping-cart-modal {
-    background-color: #c4dc;
+    background-color: #fff;
     position: absolute;
     display: flex;
-    width: 300px;
-    height: 300px;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 4px;
+    top: 75px;
+    right: 100px;
+    width: 315px;
+    height: 450px;
+    box-shadow: 1px 1px 25px #00000015;
 }
-#shopping-cart-modal::after {
-    
+
+#shopping-cart-modal h3 {
+    color: #474747;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#shopping-cart-modal #line {
+    height: 1px;
+    width: 100%;
+    display: flex;
+    border: 1px solid #474747;
 }

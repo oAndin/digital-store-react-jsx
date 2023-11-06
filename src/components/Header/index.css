@@ -68,6 +68,7 @@ header nav ul {
 
 header .acoes box-icon{
     transition: 0.3s ease-in-out;
+    position: relative;
 }
 header .acoes box-icon:hover{
     fill: #c92071;
