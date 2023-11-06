@@ -6,21 +6,7 @@ import { ShoppingCartContext } from '../../contexts/ShoppingCartContext/Index';
 const ShoppingCartModal = () => {
 
     const { isCartOpen } = useContext(ShoppingCartContext);
-    const [itensCarrinho, setItensCarrinhos] = useState([]);
-    useEffect(() => {
-
-        fetch("http://localhost:5000/itensCarrinho", {
-            method: "GET",
-            headers: {
-                "Content-type": "application-json"
-            }
-        }).then((response) => response.json())
-            .then((data) => {
-                setItensCarrinhos(data)
-            })
-            .catch(error => console.log(error))
-
-    }, []);
+    
     return (
         <>
             {isCartOpen && (
