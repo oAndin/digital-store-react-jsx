@@ -25,3 +25,11 @@
     margin: 20px 0;
     border: 1px solid #CCC;
 }
+
+#carrinho {
+    width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
