@@ -8,6 +8,7 @@ import MeusPedidos from './routes/MeusPedidos/Index.jsx';
 import Produtos from './routes/Produtos/Index.jsx';
 import Categorias from './routes/Categorias/Index.jsx';
 import { ShoppingCartProvider } from './contexts/ShoppingCartContext/Index.jsx';
+import { ItemsCartProvider } from './contexts/ItemsCartContext/Index.jsx';
 
 
 const router = createBrowserRouter([
@@ -37,9 +38,10 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  
+  <ItemsCartProvider>
     <ShoppingCartProvider>
       <RouterProvider router={router} />
     </ShoppingCartProvider>
+  </ItemsCartProvider>
 
 )

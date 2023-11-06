@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const ItemsCartContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 export const ItemsCartProvider = ({children}) => {
     const [itensCarrinho, setItensCarrinhos] = useState([]);
     useEffect(() => {
@@ -19,7 +20,7 @@ export const ItemsCartProvider = ({children}) => {
     }, []);
 
     return (
-        <ItemsCartContext.Provider>
+        <ItemsCartContext.Provider value={{itensCarrinho}}>
             {children}
         </ItemsCartContext.Provider>
     )

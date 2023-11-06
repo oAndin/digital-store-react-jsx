@@ -1,12 +1,13 @@
 
-import { useContext, useEffect, useState } from 'react'
+import { useContext} from 'react'
 import './index.css'
 import { ShoppingCartContext } from '../../contexts/ShoppingCartContext/Index';
+import { ItemsCartContext } from '../../contexts/ItemsCartContext/Index';
 
 const ShoppingCartModal = () => {
 
     const { isCartOpen } = useContext(ShoppingCartContext);
-    
+    const {itensCarrinho} = useContext(ItemsCartContext)
     return (
         <>
             {isCartOpen && (
