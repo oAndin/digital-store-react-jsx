@@ -69,8 +69,62 @@ header nav ul {
 header .acoes box-icon{
     transition: 0.3s ease-in-out;
     position: relative;
+    margin-left: 70px;
+    fill: #c92071;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+header .acoes box-icon::after {
+    content: attr(items);
+    position: absolute;
+    left: 24px;
+    top: 0px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    min-width: 16px;
+    line-height: 16px;
+    background-color: #EE4266;
+    border-radius: 8px;
 }
 header .acoes box-icon:hover{
     fill: #c92071;
     cursor: pointer;
+}
+
+header .acoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .acoes a{
+    line-height: 40px;
+    padding: 0 26px;
+    display: inline-block;
+    transition: 0.5s ease-in-out;
+}
+
+header .acoes .underline {
+    color: #474747;
+    text-decoration: underline;
+}
+
+header .acoes .underline:hover {
+    color: #c92071;
+}
+
+header .acoes .filled {
+    text-align: center;
+    background-color: #c92071;
+    color: #fff;
+    border-radius: 8px;
+    width: 114px;
+    height: 40px;
+}
+
+header .acoes .filled:hover {
+    background-color: #991956;
 }

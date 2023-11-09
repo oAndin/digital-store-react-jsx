@@ -1,5 +1,5 @@
 import './index.css'
-import { useContext } from 'react';
+import { useContext} from 'react';
 import { Link } from 'react-router-dom';
 import 'boxicons';
 import logo from './assets/logo.png'
@@ -9,7 +9,6 @@ import { ShoppingCartContext } from '../../contexts/ShoppingCartContext/Index';
 const Header = () => {
     const { isCartOpen, setIsCartOpen } = useContext(ShoppingCartContext);
 
-
     return (
         <>
             <header>
@@ -18,9 +17,12 @@ const Header = () => {
                     <box-icon name='search'></box-icon>
                 </div>
                 <div className="acoes">
-                    <Link to={'/cadastro'}>Cadastre-se</Link>
-                    <Link to={'/login'}>Entrar</Link>
-                    <box-icon name='cart' onClick={() => {
+                    <Link to={'/cadastro'} className='underline'>Cadastre-se</Link>
+                    <Link to={'/login'} className='filled'>Entrar</Link>
+                    <box-icon name='cart'
+                    items='0'
+                    id='cart'
+                     onClick={() => {
                         setIsCartOpen(!isCartOpen)
                     }} ></box-icon>
                     {isCartOpen && (
