@@ -7,6 +7,7 @@ import ItemsCart from '../ItemsCart/Index';
 const ShoppingCartModal = () => {
 
     const { isCartOpen } = useContext(ShoppingCartContext);
+    
     return (
         <>
             {isCartOpen && (
