@@ -1,12 +1,23 @@
 import Carrossel from "../../components/Carrossel/Index"
+import ColecaoDestaque from "../../components/ColecaoDestaque/Index"
+import OfertaEspecial from "../../components/OfertaEspecial/Index"
+import ProdutosAlta from "../../components/ProdutosAlta/Index"
 
 const Home = () => {
   return (
     <>
-    <div>
-        <h1>Home</h1>
-        <Carrossel/>
-    </div>
+      <div>
+        <Carrossel />
+      </div>
+      <div>
+        <ColecaoDestaque />
+      </div>
+      <div>
+        <ProdutosAlta />
+      </div>
+      <div>
+        <OfertaEspecial />
+      </div>
     </>
   )
 }
