@@ -62,7 +62,7 @@ position: relative;
 
 const CarrosselSlides = styled.div`
 display: flex;
-width: 300%;
+width: 400%;
 position:absolute;
 top:0;
 left: calc( -100% * ${props => props.$position || 0});
