@@ -1,9 +1,10 @@
+import ListarProdutos from "../../components/ListarProdutos/Index"
 
 const Produtos = () => {
     return (
         <>
             <div>
-                <h1>Produtos</h1>
+                <ListarProdutos />
             </div>
         </>
     )

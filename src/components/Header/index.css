@@ -9,10 +9,16 @@ header {
 
 header .logo {
     margin-right: 27px;
+    width: 253px;
+    height: 44px;
+}
+
+header .logo img {
+    width: 100%;
 }
 
 header .busca {
-    flex:1;
+    flex: 1;
     background-color: #47474720;
     border-radius: 8px;
     height: 60px;
@@ -29,9 +35,9 @@ header .busca input {
     transition: 0.3s ease-in-out;
 }
 
-header .busca input:focus{
+header .busca input:focus {
     border-radius: 8px;
-    border:2px solid #c92071;
+    border: 2px solid #c92071;
 }
 
 header .busca box-icon {
@@ -43,10 +49,11 @@ header .busca box-icon {
     transition: 0.3s ease-in-out;
 }
 
-header .busca box-icon:hover{
+header .busca box-icon:hover {
     fill: #c92071;
     cursor: pointer;
 }
+
 header .acoes {
     margin-left: 48px;
 }
@@ -66,7 +73,7 @@ header nav ul {
     gap: 30px;
 }
 
-header .acoes box-icon{
+header .acoes box-icon {
     transition: 0.3s ease-in-out;
     position: relative;
     margin-left: 70px;
@@ -89,7 +96,8 @@ header .acoes box-icon::after {
     background-color: #EE4266;
     border-radius: 8px;
 }
-header .acoes box-icon:hover{
+
+header .acoes box-icon:hover {
     fill: #c92071;
     cursor: pointer;
 }
@@ -100,7 +108,7 @@ header .acoes {
     justify-content: center;
 }
 
-header .acoes a{
+header .acoes a {
     line-height: 40px;
     padding: 0 26px;
     display: inline-block;
