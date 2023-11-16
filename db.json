@@ -1,4 +1,72 @@
 {
+    "marcas": [
+        {
+            "name": "mike",
+            "id": 1
+        },
+        {
+            "name": "abiddas",
+            "id": 2
+        },
+        {
+            "name": "cadenciaga",
+            "id": 3
+        },
+        {
+            "name": "luma",
+            "id": 4
+        },
+        {
+            "name": "ombro",
+            "id": 5
+        },
+        {
+            "name": "olympicu",
+            "id": 6
+        }
+    ],
+    "categorias": [
+        {
+            "nome": "Esportes e lazer",
+            "id": 1
+        },
+        {
+            "nome": "Casual",
+            "id": 2
+        },
+        {
+            "nome": "Utilitários",
+            "id": 3
+        },
+        {
+            "nome": "Corrida",
+            "id": 4
+        }
+    ],
+    "genero": [
+        {
+            "name": "masculino",
+            "id": 1
+        },
+        {
+            "name": "feminino",
+            "id": 2
+        },
+        {
+            "name": "unissex",
+            "id": 3
+        }
+    ],
+    "estados": [
+        {
+            "estado": "novo",
+            "id": 1
+        },
+        {
+            "estado": "usado",
+            "id": 2
+        }
+    ],
     "itensCarrinho": [
         {
             "name": "Tênis Nike Revolution 6 Next Nature Masculino",

@@ -1,72 +1,107 @@
 import { styled } from "styled-components";
 import Produto from "../Produto/Index";
+import { useEffect, useState } from "react";
 
 const ListarProdutos = () => {
+
+  const [marcas, setMarcas] = useState([]);
+
+
+  const getms = () => {
+    fetch('http://localhost:5000/marcas')
+      // ,{
+      //   method: "GET",
+      //   headers: {
+      //     "Content-type": "application-json"
+      //   }
+      // })
+      .then((response) => response.json())
+      .then((response) => {
+        setMarcas(response)
+      })
+      .catch((err) => console.log(err))
+  };
+  useEffect(() => {
+    getms()
+  }, []);
+
   return (
     <>
       <ListarProdutosContainer>
         <ListarProdutosFilter>
           <h5>Filtrar por</h5>
           <Linha />
-          <h6>Marca</h6>
+          <h6>m</h6>
           <ul>
+            {
+              marcas.map(m => (
+                <li key={m.id}>
+                  <label htmlFor={`marca${m.id}`}>
+                    <input type="checkbox" name={m.name} id={`m${m.id}`} />
+                    <span></span>
+                    {m.name}
+                  </label>
+                </li>
+              ))
+            }
+            {/* 
             <li>
-              <label htmlFor="marca1">
-                <input type="checkbox" name="abiddas" id="marca1" />
+              <label htmlFor="m1">
+                <input type="checkbox" name="abiddas" id="m1" />
                 <span></span>
                 Abiddas
               </label>
             </li>
             <li>
-              <label htmlFor="marca2">
-                <input type="checkbox" name="cadenciaga" id="marca2" />
+              <label htmlFor="m2">
+                <input type="checkbox" name="cadenciaga" id="m2" />
                 <span></span>
                 Cadenciaga
               </label>
             </li>
             <li>
-              <label htmlFor="marca3">
-                <input type="checkbox" name="Mike" id="marca3" />
+              <label htmlFor="m3">
+                <input type="checkbox" name="Mike" id="m3" />
                 <span></span>
                 Mikke
               </label>
             </li>
             <li>
-              <label htmlFor="marca4">
-                <input type="checkbox" name="Luma" id="marca4" />
+              <label htmlFor="m4">
+                <input type="checkbox" name="Luma" id="m4" />
                 <span></span>
                 Luma
               </label>
-            </li>
+            </li> */}
           </ul>
           <h6>Categoria</h6>
           <ul>
             <li>
-              <label htmlFor="marca1Cat">
-                <input type="checkbox" name="abiddas" id="marca1Cat" />
+              <label htmlFor="m1Cat">
+                <input type="checkbox" name="esporta-e-lazer" id="m1Cat" />
                 <span></span>
-                Abiddas
+                Esporte e lazer
               </label>
             </li>
             <li>
-              <label htmlFor="marca2Cat">
-                <input type="checkbox" name="cadenciaga" id="marca2Cat" />
+              <label htmlFor="m2Cat">
+                <input type="checkbox" name="casual" id="m2Cat" />
                 <span></span>
-                Cadenciaga
+                Casual
               </label>
             </li>
             <li>
-              <label htmlFor="marca3Cat">
-                <input type="checkbox" name="Mike" id="marca3Cat" />
+              <label htmlFor="m3Cat">
+                <input type="checkbox" name="utilitario" id="m3Cat" />
                 <span></span>
-                Mikke
+                Utilitário
               </label>
             </li>
             <li>
-              <label htmlFor="marca4Cat">
-                <input type="checkbox" name="Luma" id="marca4Cat" />
+              <label htmlFor="m4Cat">
+                <input type="checkbox" name="corrida" id="m4Cat" />
                 <span></span>
-                Luma
+                Corrida
               </label>
             </li>
           </ul>
@@ -122,9 +157,9 @@ const ListarProdutos = () => {
 
 const ListarProdutosContainer = styled.div`
 width: 100%;
-height: 100vh;
+height: 100%;
 display: flex;
-padding: 0 100px;
+padding: 140px 100px;
 gap: 28px;
 background-color: #f5f5f5;
 border: 1px solid #ff0000;
@@ -161,8 +196,8 @@ const ListarProdutosFilter = styled.div`
           content:'';
           justify-content: center;
           align-items: center;
-          width: 14px;
-          height: 14px;
+          width: 75%;
+          height: 75%;
           border-radius: 100%;
           display: flex;
           top:0;
@@ -203,7 +238,7 @@ const ListarProdutosFilter = styled.div`
 `;
 const ListarProdutosList = styled.div`
   flex: 1;
-  border: 1px solid #aaff00;
+  /* border: 1px solid #aaff00; */
 `;
 
 const Linha = styled.div`

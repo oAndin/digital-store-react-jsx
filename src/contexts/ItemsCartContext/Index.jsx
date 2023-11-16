@@ -3,7 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const ItemsCartContext = createContext();
 
 // eslint-disable-next-line react/prop-types
-export const ItemsCartProvider = ({children}) => {
+export const ItemsCartProvider = ({ children }) => {
     const [itensCarrinho, setItensCarrinhos] = useState([]);
     useEffect(() => {
 
@@ -12,7 +12,8 @@ export const ItemsCartProvider = ({children}) => {
             headers: {
                 "Content-type": "application-json"
             }
-        }).then((response) => response.json())
+        })
+            .then((response) => response.json())
             .then((data) => {
                 setItensCarrinhos(data)
             })
@@ -20,7 +21,7 @@ export const ItemsCartProvider = ({children}) => {
     }, []);
 
     return (
-        <ItemsCartContext.Provider value={{itensCarrinho}}>
+        <ItemsCartContext.Provider value={{ itensCarrinho }}>
             {children}
         </ItemsCartContext.Provider>
     )
