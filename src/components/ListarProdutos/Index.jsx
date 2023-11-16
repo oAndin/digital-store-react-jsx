@@ -156,7 +156,7 @@ const ListarProdutosFilter = styled.div`
       &:checked + span {
         background-color: #C92071;
         border-color: #c92071;
-        &::after{
+        &.radio::after{
           content:'';
           justify-content: center;
           align-items: center;
