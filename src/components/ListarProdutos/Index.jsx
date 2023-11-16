@@ -41,31 +41,72 @@ const ListarProdutos = () => {
           <h6>Categoria</h6>
           <ul>
             <li>
-              <label htmlFor="marca1">
-                <input type="checkbox" name="abiddas" id="marca1" />
+              <label htmlFor="marca1Cat">
+                <input type="checkbox" name="abiddas" id="marca1Cat" />
                 <span></span>
                 Abiddas
               </label>
             </li>
             <li>
-              <label htmlFor="marca2">
-                <input type="checkbox" name="cadenciaga" id="marca2" />
+              <label htmlFor="marca2Cat">
+                <input type="checkbox" name="cadenciaga" id="marca2Cat" />
                 <span></span>
                 Cadenciaga
               </label>
             </li>
             <li>
-              <label htmlFor="marca3">
-                <input type="checkbox" name="Mike" id="marca3" />
+              <label htmlFor="marca3Cat">
+                <input type="checkbox" name="Mike" id="marca3Cat" />
                 <span></span>
                 Mikke
               </label>
             </li>
             <li>
-              <label htmlFor="marca4">
-                <input type="checkbox" name="Luma" id="marca4" />
+              <label htmlFor="marca4Cat">
+                <input type="checkbox" name="Luma" id="marca4Cat" />
                 <span></span>
                 Luma
+              </label>
+            </li>
+          </ul>
+          <h6>Gênero</h6>
+          <ul id='genero'>
+            <li>
+              <label htmlFor="Masculino">
+                <input type="checkbox" name="Masculino" id="Masculino" />
+                <span></span>
+                Masculino
+              </label>
+            </li>
+            <li>
+              <label htmlFor="Feminino">
+                <input type="checkbox" name="Feminino" id="Feminino" />
+                <span></span>
+                Feminino
+              </label>
+            </li>
+            <li>
+              <label htmlFor="Unisex">
+                <input type="checkbox" name="Unisex" id="Unisex" />
+                <span></span>
+                Unisex
+              </label>
+            </li>
+          </ul>
+          <h6>Estado</h6>
+          <ul>
+            <li>
+              <label htmlFor="novo">
+                <input type="radio" name="estado" id="novo" />
+                <span className="radio"></span>
+                Novo
+              </label>
+            </li>
+            <li>
+              <label htmlFor="usado">
+                <input type="radio" name="estado" id="usado" />
+                <span className="radio"></span>
+                Usado
               </label>
             </li>
           </ul>
@@ -106,6 +147,7 @@ const ListarProdutosFilter = styled.div`
     height:22px;
     display: flex;
     gap: 10px;
+    cursor: pointer;
     align-items: center;
     & input {
       width: 22px;
@@ -114,6 +156,19 @@ const ListarProdutosFilter = styled.div`
       &:checked + span {
         background-color: #C92071;
         border-color: #c92071;
+        &::after{
+          content:'';
+          justify-content: center;
+          align-items: center;
+          width: 14px;
+          height: 14px;
+          border-radius: 100%;
+          display: flex;
+          top:0;
+          left:0;
+          transform: none;
+          border: 3px solid #fff;
+        }
       }
     }
     & span {
@@ -122,6 +177,15 @@ const ListarProdutosFilter = styled.div`
       border-radius: 2px;
       border: 1px solid #666;
       position: absolute;
+      &.radio{
+        border-radius: 100%; 
+        padding: 2px;
+        /* width: 18px;
+        height: 18px; */
+        &::after {
+          border:0;
+        }
+      }
       &::after{
         content: '';
         width: 12px;
