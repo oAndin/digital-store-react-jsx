@@ -1,69 +1,69 @@
 {
     "marcas": [
         {
-            "name": "mike",
+            "name": "Mike",
             "id": 1
         },
         {
-            "name": "abiddas",
+            "name": "Abiddas",
             "id": 2
         },
         {
-            "name": "cadenciaga",
+            "name": "Cadenciaga",
             "id": 3
         },
         {
-            "name": "luma",
+            "name": "Luma",
             "id": 4
         },
         {
-            "name": "ombro",
+            "name": "Ombro",
             "id": 5
         },
         {
-            "name": "olympicu",
+            "name": "Olympicu",
             "id": 6
         }
     ],
     "categorias": [
         {
-            "nome": "Esportes e lazer",
+            "name": "Esportes e lazer",
             "id": 1
         },
         {
-            "nome": "Casual",
+            "name": "Casual",
             "id": 2
         },
         {
-            "nome": "Utilitários",
+            "name": "Utilitários",
             "id": 3
         },
         {
-            "nome": "Corrida",
+            "name": "Corrida",
             "id": 4
         }
     ],
     "genero": [
         {
-            "name": "masculino",
+            "name": "Masculino",
             "id": 1
         },
         {
-            "name": "feminino",
+            "name": "Feminino",
             "id": 2
         },
         {
-            "name": "unissex",
+            "name": "Unissex",
             "id": 3
         }
     ],
     "estados": [
         {
-            "estado": "novo",
+            "estado": "Novo",
             "id": 1
         },
         {
-            "estado": "usado",
+            "estado": "Usado",
             "id": 2
         }
     ],

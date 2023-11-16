@@ -5,9 +5,12 @@ import { useEffect, useState } from "react";
 const ListarProdutos = () => {
 
   const [marcas, setMarcas] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [genero, setGenero] = useState([]);
+  const [estado, setestado] = useState([]);
 
 
-  const getms = () => {
+  const getMarcas = () => {
     fetch('http://localhost:5000/marcas')
       // ,{
       //   method: "GET",
@@ -21,8 +24,44 @@ const ListarProdutos = () => {
       })
       .catch((err) => console.log(err))
   };
+  const getCategorias = () => {
+    fetch('http://localhost:5000/categorias')
+      // ,{
+      //   method: "GET",
+      //   headers: {
+      //     "Content-type": "application-json"
+      //   }
+      // })
+      .then((response) => response.json())
+      .then((response) => {
+        setCategorias(response)
+      })
+      .catch((err) => console.log(err))
+  };
+
+  const getGenero = () => {
+    fetch('http://localhost:5000/genero')
+      .then((response) => response.json())
+      .then((response) => {
+        setGenero(response)
+      })
+      .catch((error) => (console.log(error)))
+  };
+
+  const getEstado = () => {
+    fetch('http://localhost:5000/genero')
+      .then((response) => response.json())
+      .then((response) => {
+        setestado(response)
+      })
+      .catch((error) => (console.log(error)));
+  }
+
   useEffect(() => {
-    getms()
+    getMarcas();
+    getCategorias();
+    getGenero();
+    getEstado();
   }, []);
 
   return (
@@ -31,7 +70,7 @@ const ListarProdutos = () => {
         <ListarProdutosFilter>
           <h5>Filtrar por</h5>
           <Linha />
-          <h6>m</h6>
+          <h6>Marcas</h6>
           <ul>
             {
               marcas.map(m => (
@@ -44,116 +83,66 @@ const ListarProdutos = () => {
                 </li>
               ))
             }
-            {/* 
-            <li>
-              <label htmlFor="m1">
-                <input type="checkbox" name="abiddas" id="m1" />
-                <span></span>
-                Abiddas
-              </label>
-            </li>
-            <li>
-              <label htmlFor="m2">
-                <input type="checkbox" name="cadenciaga" id="m2" />
-                <span></span>
-                Cadenciaga
-              </label>
-            </li>
-            <li>
-              <label htmlFor="m3">
-                <input type="checkbox" name="Mike" id="m3" />
-                <span></span>
-                Mikke
-              </label>
-            </li>
-            <li>
-              <label htmlFor="m4">
-                <input type="checkbox" name="Luma" id="m4" />
-                <span></span>
-                Luma
-              </label>
-            </li> */}
           </ul>
           <h6>Categoria</h6>
           <ul>
-            <li>
-              <label htmlFor="m1Cat">
-                <input type="checkbox" name="esporta-e-lazer" id="m1Cat" />
-                <span></span>
-                Esporte e lazer
-              </label>
-            </li>
-            <li>
-              <label htmlFor="m2Cat">
-                <input type="checkbox" name="casual" id="m2Cat" />
-                <span></span>
-                Casual
-              </label>
-            </li>
-            <li>
-              <label htmlFor="m3Cat">
-                <input type="checkbox" name="utilitario" id="m3Cat" />
-                <span></span>
-                Utilitário
-              </label>
-            </li>
-            <li>
-              <label htmlFor="m4Cat">
-                <input type="checkbox" name="corrida" id="m4Cat" />
-                <span></span>
-                Corrida
-              </label>
-            </li>
+            {
+              categorias.map(categoria => (
+                <li key={categoria.id}>
+                  <label htmlFor={`categoria${categoria.id}`}>
+                    <input type="checkbox" name={categoria.name} id={`categoria${categoria.id}`} />
+                    <span></span>
+                    {categoria.name}
+                  </label>
+                </li>
+              ))
+            }
           </ul>
           <h6>Gênero</h6>
           <ul id='genero'>
-            <li>
-              <label htmlFor="Masculino">
-                <input type="checkbox" name="Masculino" id="Masculino" />
-                <span></span>
-                Masculino
-              </label>
-            </li>
-            <li>
-              <label htmlFor="Feminino">
-                <input type="checkbox" name="Feminino" id="Feminino" />
-                <span></span>
-                Feminino
-              </label>
-            </li>
-            <li>
-              <label htmlFor="Unisex">
-                <input type="checkbox" name="Unisex" id="Unisex" />
-                <span></span>
-                Unisex
-              </label>
-            </li>
+            {genero.map(genero => (
+              <li key={genero.id}>
+                <label htmlFor={`genero${genero.id}`}>
+                  <input type="checkbox" name={genero.name} id={`genero${genero.id}`} />
+                  <span></span>
+                  {genero.name}
+                </label>
+              </li>
+            ))}
           </ul>
           <h6>Estado</h6>
           <ul>
-            <li>
-              <label htmlFor="novo">
-                <input type="radio" name="estado" id="novo" />
-                <span className="radio"></span>
-                Novo
-              </label>
-            </li>
-            <li>
-              <label htmlFor="usado">
-                <input type="radio" name="estado" id="usado" />
-                <span className="radio"></span>
-                Usado
-              </label>
-            </li>
+            {estado.map(estado => (
+              <li key={estado.id}>
+                <label htmlFor={`estado${estado.id}`}>
+                  <input type="radio" name={estado.name} id={`estado${estado.id}`} />
+                  <span className="radio"></span>
+                  {estado.name}
+                </label>
+              </li>
+            ))}
           </ul>
         </ListarProdutosFilter>
         <ListarProdutosList>
+          <Produto />
+          <Produto />
+          <Produto />
           <Produto />
         </ListarProdutosList>
       </ListarProdutosContainer>
     </>
   )
 }
+
+const ListarProdutosList = styled.div`
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  width: 904px;
+  height: 918px;
+  border: 1px solid #aaff00;
+`;
 
 const ListarProdutosContainer = styled.div`
 width: 100%;
@@ -162,7 +151,6 @@ display: flex;
 padding: 140px 100px;
 gap: 28px;
 background-color: #f5f5f5;
-border: 1px solid #ff0000;
 `;
 const ListarProdutosFilter = styled.div`
   width: 310px;
@@ -236,10 +224,7 @@ const ListarProdutosFilter = styled.div`
     }
   }
 `;
-const ListarProdutosList = styled.div`
-  flex: 1;
-  /* border: 1px solid #aaff00; */
-`;
+
 
 const Linha = styled.div`
   width: 100%;
