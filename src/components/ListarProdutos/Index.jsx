@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import Produto from "../Produto/Index";
 
 const ListarProdutos = () => {
   return (
@@ -71,7 +72,7 @@ const ListarProdutos = () => {
           </ul>
         </ListarProdutosFilter>
         <ListarProdutosList>
-          <h1>Lista</h1>
+          <Produto />
         </ListarProdutosList>
       </ListarProdutosContainer>
     </>
