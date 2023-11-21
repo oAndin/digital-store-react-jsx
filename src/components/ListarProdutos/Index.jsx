@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import Produto from "../Produto/Index";
 import { useEffect, useState } from "react";
 
 const ListarProdutos = () => {
@@ -8,7 +7,16 @@ const ListarProdutos = () => {
   const [categorias, setCategorias] = useState([]);
   const [genero, setGenero] = useState([]);
   const [estado, setestado] = useState([]);
+  const [produtos, setProdutos] = useState([]);
 
+  const getProdutos = () => {
+    fetch("http://localhost:5000/produtos")
+      .then((response) => response.json())
+      .then((response) => {
+        setProdutos(response);
+      })
+      .catch((err) => console.log(err));
+  }
 
   const getMarcas = () => {
     fetch('http://localhost:5000/marcas')
@@ -62,6 +70,7 @@ const ListarProdutos = () => {
     getCategorias();
     getGenero();
     getEstado();
+    getProdutos();
   }, []);
 
   return (
@@ -124,23 +133,65 @@ const ListarProdutos = () => {
           </ul>
         </ListarProdutosFilter>
         <ListarProdutosList>
-          <Produto />
-          <Produto />
-          <Produto />
-          <Produto />
+          <ul>
+            {produtos.map(produto =>
+            (
+              <ProdutoContainer key={produto.id}>
+                <ProdutoImagem src={produto.img} />
+                <h5>{produto.categoria}</h5>
+                {/* <ProdutoImagem>
+                  <img src={produto.img} alt="Imagem do Produto" />
+                </ProdutoImagem> */}
+                <h2>{produto.name}</h2>
+                <h3>{produto.preco}</h3>
+              </ProdutoContainer>
+            )
+            )}
+          </ul>
         </ListarProdutosList>
       </ListarProdutosContainer>
     </>
   )
 }
 
+const ProdutoContainer = styled.li`
+  width: 292px;
+  height: 439px;
+  /* border: 1px solid #000; */
+  & h2 {
+    /* width: 283px; */
+    height: 38px;
+    font-size: 24px;
+    line-height: 38px;
+    /* letter-spacing: 0.75px; */
+    color: #474747;
+    font-weight: 400;
+  }
+  & ul {
+    & li {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+
+`;
+
+const ProdutoImagem = styled.img`
+  width: 292px;
+  height: 321px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #FFF;
+  box-shadow: 6px 16px 30px 0px rgba(105, 98, 98, 0.05);
+`;
+
 const ListarProdutosList = styled.div`
   flex: 1;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 14px;
   width: 904px;
-  height: 918px;
+  height: 100%;
   border: 1px solid #aaff00;
 `;
 
