@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 import { useEffect, useState } from "react";
+import { useMarcas } from "../../hooks/useMarcas";
+import { API } from "../../services";
 
 const ListarProdutos = () => {
 
@@ -8,6 +10,9 @@ const ListarProdutos = () => {
   const [genero, setGenero] = useState([]);
   const [estado, setestado] = useState([]);
   const [produtos, setProdutos] = useState([]);
+  const [loadingMarcas, setLoadingMarcas] = useState();
+
+  const dataMarcas = useMarcas();
 
   const getProdutos = () => {
     fetch("http://localhost:5000/produtos")
@@ -18,19 +23,22 @@ const ListarProdutos = () => {
       .catch((err) => console.log(err));
   }
 
-  const getMarcas = () => {
-    fetch('http://localhost:5000/marcas')
-      // ,{
-      //   method: "GET",
-      //   headers: {
-      //     "Content-type": "application-json"
-      //   }
-      // })
-      .then((response) => response.json())
-      .then((response) => {
-        setMarcas(response)
-      })
-      .catch((err) => console.log(err))
+  const getMarcas = async () => {
+    try {
+      const response = await API.get('marcas');
+      setLoadingMarcas(false);
+      if (response.data) {
+        setMarcas(response.data)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    // fetch('http://localhost:5000/marcas')
+    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     setMarcas(response)
+    //   })
+    //   .catch((err) => console.log(err))
   };
   const getCategorias = () => {
     fetch('http://localhost:5000/categorias')
@@ -57,7 +65,7 @@ const ListarProdutos = () => {
   };
 
   const getEstado = () => {
-    fetch('http://localhost:5000/genero')
+    fetch('http://localhost:5000/estados')
       .then((response) => response.json())
       .then((response) => {
         setestado(response)
@@ -77,6 +85,9 @@ const ListarProdutos = () => {
     <>
       <ListarProdutosContainer>
         <ListarProdutosFilter>
+          {loadingMarcas && (
+            <h1>Loading</h1>
+          )}
           <h5>Filtrar por</h5>
           <Linha />
           <h6>Marcas</h6>
@@ -124,9 +135,9 @@ const ListarProdutos = () => {
             {estado.map(estado => (
               <li key={estado.id}>
                 <label htmlFor={`estado${estado.id}`}>
-                  <input type="radio" name={estado.name} id={`estado${estado.id}`} />
+                  <input type="radio" name={'estado'} value={`estado${estado.id}`} id={`estado${estado.id}`} />
                   <span className="radio"></span>
-                  {estado.name}
+                  {estado.estado}
                 </label>
               </li>
             ))}
