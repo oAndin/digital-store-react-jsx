@@ -1,14 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import Header from './components/Header/Index';
 import Footer from './components/Footer/Index';
-import './App.css';
 
 const App = () => {
   return (
     <>
-        <Header />
-        <Outlet />
-        <Footer />
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   )
 }

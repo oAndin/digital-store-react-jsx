@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import './index.css'
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 import Error from './routes/Error/Index.jsx';
 import Home from './routes/Home/Index.jsx'
@@ -9,6 +8,9 @@ import Produtos from './routes/Produtos/Index.jsx';
 import Categorias from './routes/Categorias/Index.jsx';
 import { ShoppingCartProvider } from './contexts/ShoppingCartContext/Index.jsx';
 import { ItemsCartProvider } from './contexts/ItemsCartContext/Index.jsx';
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from './services/index.js';
+import Dashboard from './routes/Dashboard/Index.jsx';
 
 
 const router = createBrowserRouter([
@@ -32,16 +34,21 @@ const router = createBrowserRouter([
         path: '/categorias',
         element: <Categorias />
       },
+      {
+        path: '/dashboard',
+        element: <Dashboard />
+      },
     ],
     errorElement: <Error />
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ItemsCartProvider>
-    <ShoppingCartProvider>
-      <RouterProvider router={router} />
-    </ShoppingCartProvider>
-  </ItemsCartProvider>
-
+  <QueryClientProvider client={queryClient}>
+    <ItemsCartProvider>
+      <ShoppingCartProvider>
+        <RouterProvider router={router} />
+      </ShoppingCartProvider>
+    </ItemsCartProvider>
+  </QueryClientProvider>
 )

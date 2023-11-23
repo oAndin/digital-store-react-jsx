@@ -1,18 +1,18 @@
 import { styled } from "styled-components";
 import { useEffect, useState } from "react";
 import { useMarcas } from "../../hooks/useMarcas";
-import { API } from "../../services";
+import { useCategorias } from "../../hooks/useCastegorias";
+import { useGeneros } from "../../hooks/useGeneros";
 
 const ListarProdutos = () => {
 
-  const [marcas, setMarcas] = useState([]);
-  const [categorias, setCategorias] = useState([]);
-  const [genero, setGenero] = useState([]);
+
   const [estado, setestado] = useState([]);
   const [produtos, setProdutos] = useState([]);
-  const [loadingMarcas, setLoadingMarcas] = useState();
 
-  const dataMarcas = useMarcas();
+  const { data: dataMarcas, isLoading: isLoadingMarcas } = useMarcas();
+  const { data: dataCategorias, isLoading: isLoadingCategorias } = useCategorias();
+  const { data: dataGeneros, isLoading: isLoadingGeneros } = useGeneros();
 
   const getProdutos = () => {
     fetch("http://localhost:5000/produtos")
@@ -22,47 +22,6 @@ const ListarProdutos = () => {
       })
       .catch((err) => console.log(err));
   }
-
-  const getMarcas = async () => {
-    try {
-      const response = await API.get('marcas');
-      setLoadingMarcas(false);
-      if (response.data) {
-        setMarcas(response.data)
-      }
-    } catch (error) {
-      console.log(error);
-    }
-    // fetch('http://localhost:5000/marcas')
-    //   .then((response) => response.json())
-    //   .then((response) => {
-    //     setMarcas(response)
-    //   })
-    //   .catch((err) => console.log(err))
-  };
-  const getCategorias = () => {
-    fetch('http://localhost:5000/categorias')
-      // ,{
-      //   method: "GET",
-      //   headers: {
-      //     "Content-type": "application-json"
-      //   }
-      // })
-      .then((response) => response.json())
-      .then((response) => {
-        setCategorias(response)
-      })
-      .catch((err) => console.log(err))
-  };
-
-  const getGenero = () => {
-    fetch('http://localhost:5000/genero')
-      .then((response) => response.json())
-      .then((response) => {
-        setGenero(response)
-      })
-      .catch((error) => (console.log(error)))
-  };
 
   const getEstado = () => {
     fetch('http://localhost:5000/estados')
@@ -74,9 +33,6 @@ const ListarProdutos = () => {
   }
 
   useEffect(() => {
-    getMarcas();
-    getCategorias();
-    getGenero();
     getEstado();
     getProdutos();
   }, []);
@@ -85,15 +41,12 @@ const ListarProdutos = () => {
     <>
       <ListarProdutosContainer>
         <ListarProdutosFilter>
-          {loadingMarcas && (
-            <h1>Loading</h1>
-          )}
           <h5>Filtrar por</h5>
           <Linha />
           <h6>Marcas</h6>
           <ul>
             {
-              marcas.map(m => (
+              isLoadingMarcas || dataMarcas.map(m => (
                 <li key={m.id}>
                   <label htmlFor={`marca${m.id}`}>
                     <input type="checkbox" name={m.name} id={`m${m.id}`} />
@@ -107,7 +60,7 @@ const ListarProdutos = () => {
           <h6>Categoria</h6>
           <ul>
             {
-              categorias.map(categoria => (
+              isLoadingCategorias || dataCategorias.map(categoria => (
                 <li key={categoria.id}>
                   <label htmlFor={`categoria${categoria.id}`}>
                     <input type="checkbox" name={categoria.name} id={`categoria${categoria.id}`} />
@@ -120,15 +73,16 @@ const ListarProdutos = () => {
           </ul>
           <h6>Gênero</h6>
           <ul id='genero'>
-            {genero.map(genero => (
-              <li key={genero.id}>
-                <label htmlFor={`genero${genero.id}`}>
-                  <input type="checkbox" name={genero.name} id={`genero${genero.id}`} />
-                  <span></span>
-                  {genero.name}
-                </label>
-              </li>
-            ))}
+            {
+              isLoadingGeneros || dataGeneros.map(genero => (
+                <li key={genero.id}>
+                  <label htmlFor={`genero${genero.id}`}>
+                    <input type="checkbox" name={genero.name} id={`genero${genero.id}`} />
+                    <span></span>
+                    {genero.name}
+                  </label>
+                </li>
+              ))}
           </ul>
           <h6>Estado</h6>
           <ul>
