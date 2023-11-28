@@ -11,6 +11,8 @@ import { ItemsCartProvider } from './contexts/ItemsCartContext/Index.jsx';
 import { QueryClientProvider } from 'react-query';
 import { queryClient } from './services/index.js';
 import Dashboard from './routes/Dashboard/Index.jsx';
+import AppLogged from './AppLogged.jsx';
+import Test from './routes/Test/Index.jsx';
 
 
 const router = createBrowserRouter([
@@ -33,13 +35,23 @@ const router = createBrowserRouter([
       {
         path: '/categorias',
         element: <Categorias />
-      },
-      {
-        path: '/dashboard',
-        element: <Dashboard />
-      },
+      }
     ],
     errorElement: <Error />
+  },
+  {
+    path: "/logged",
+    element: <AppLogged />,
+    children: [
+      {
+        path: "/logged/dashboard",
+        element: <Dashboard />
+      },
+      {
+        path: "/logged/test",
+        element: <Test />
+      }
+    ]
   }
 ])
 
